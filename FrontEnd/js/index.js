@@ -78,7 +78,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     logout.textContent = "logout";
     conteneurBtn.style.display = "none";
     openModal.style.display = "flex";
-    console.log("Je suis connectée");
   } else {
     console.log("Je ne suis pas connecte");
   }

@@ -123,7 +123,6 @@ function ajoutProjet() {
   formData.append("image", telechargerPhoto.files[0]);
   formData.append("title", titrePhoto.value);
   formData.append("category", choisirCategorie.value);
-  console.log("categorie", choisirCategorie.value);
 
   const response = fetch("http://localhost:5678/api/works/", {
     method: "POST",
@@ -133,7 +132,6 @@ function ajoutProjet() {
     body: formData,
   }).then((response) => {
     if (response.ok) {
-      console.log("Me vois tu ?");
       majGallery();
       resetModal2();
     } else if (response.status == "401") {
@@ -160,29 +158,24 @@ photoForm.addEventListener("submit", (e) => {
 
 // ----- Vérification des differents champs et le bouton "valider" qui devient vert -----
 titrePhoto.addEventListener("input", () => {
-  console.log("Je vérifie le changement du titre du projet");
   verifChamps();
 });
 
 telechargerPhoto.addEventListener("input", () => {
-  console.log("Je verifie le changement de la photo");
   verifChamps();
 });
 
 choisirCategorie.addEventListener("input", () => {
-  console.log("Je verifie le changement de la categorie");
   verifChamps();
 });
 
 function verifChamps() {
   if (titrePhoto.value && telechargerPhoto.files[0] && choisirCategorie.value) {
-    console.log("je transforme en vert");
     errorFormulaire.innerHTML = "";
     btnFormulaire.style.cursor = "pointer";
     btnFormulaire.style.background = "#1d6154";
     btnFormulaire.style.border = "#1d6154";
   } else {
-    console.log("je transforme en gris");
     errorFormulaire.innerHTML = "Veuillez remplir tous les champs";
     btnFormulaire.style.background = "#8d837e";
     btnFormulaire.style.border = "#8d837e";
